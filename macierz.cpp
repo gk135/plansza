@@ -57,13 +57,16 @@ void transformer(){
         row2Guard.lock();
 	displayGuard.lock();
 	tabGuard.lock();
+	tabtemp.push(0);
 	for(int i = 0 ; i<a; i++ ){
 		for(int j = 0 ; j<b; j++ ){
+			if(i==a-1 && j==b-1)
+		continue;
 		tabtemp.push(tab[i][j]);
 		}
    	}
-	tabtemp.push(0);
-	tabtemp.pop();
+	
+	
 	
 	 for(int i = 0 ; i<a; i++ ){
                 for(int j = 0 ; j<b; j++ ){
