@@ -33,7 +33,6 @@ void producer(){
 
 	row1Guard.lock();
 	row2Guard.lock();
-	displayGuard.lock();
 
 
 	row1.push(std::rand() %a);
@@ -41,7 +40,6 @@ void producer(){
 
 	row1Guard.unlock();
         row2Guard.unlock();
-        displayGuard.unlock();
 
 	
 	 std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -102,7 +100,7 @@ void display(){
 
   std::this_thread::sleep_for(std::chrono::seconds(1));
 
-
+	tabGuard.lock();
 
   clear();
 for(int i=0; i < a; i++){
@@ -114,7 +112,7 @@ for(int i=0; i < a; i++){
     printw("\n");
 
 refresh();
-
+	tabGuard.unlock();
 }	
 
 
